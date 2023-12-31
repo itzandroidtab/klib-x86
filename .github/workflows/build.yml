@@ -16,7 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        path: '${{github.workspace}}/klib-x86'
+        with:
+          path: '${{github.workspace}}/klib-x86'
 
       - name: getting klib
         uses: actions/checkout@v3
