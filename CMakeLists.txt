@@ -10,12 +10,20 @@ add_compile_options("-fsingle-precision-constant")
 # set the sources
 set(SOURCES 
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/klib/math.cpp
 )
 
 # add our executable
 add_executable(klib-x86
     ${SOURCES}
 )
+
+# enable C++20 support
+target_compile_features(klib-x86 PUBLIC cxx_std_20)
+target_compile_options(klib-x86 PUBLIC -O1)
+
+# include klib 
+target_include_directories(klib-x86 PUBLIC ../klib/)
 
 # Libraries to link for all targets
 target_link_libraries(klib-x86 PUBLIC m)
