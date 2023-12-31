@@ -1,1 +1,2 @@
-## X86 tests for KLIB
+# Testcases for klib
+Uses catch2 to test all the microcontroller independend code. Github actions of klib only tests if all the drivers and shared code compiles. This repo tests the implementation on a x86 machine.
