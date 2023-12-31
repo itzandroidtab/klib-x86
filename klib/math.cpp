@@ -68,4 +68,39 @@ TEST_CASE("math pow", "[klib::math]") {
 
 TEST_CASE("math ceil", "[klib::math]") {
     REQUIRE(klib::ceil(9.5f) == 10.f);
+    REQUIRE(klib::ceil(-9.5f) == -9.f);
 }
+
+TEST_CASE("math floor", "[klib::math]") {
+    REQUIRE(klib::ceil(9.5f) == 9.f);
+    REQUIRE(klib::ceil(-9.5f) == -10.f);
+}
+
+TEST_CASE("math min", "[klib::math]") {
+    REQUIRE(klib::min(10, 20) == 10);
+    REQUIRE(klib::min(10.f, 20.f) == 10.f);
+    REQUIRE(klib::min(-100, 0) == -100);
+    REQUIRE(klib::min(0x0, 0xffff) == 0x0);
+}
+
+TEST_CASE("math max", "[klib::math]") {
+    REQUIRE(klib::max(10, 20) == 20);
+    REQUIRE(klib::max(10.f, 20.f) == 20.f);
+    REQUIRE(klib::max(-100, 0) == 0);
+    REQUIRE(klib::max(0x0, 0xffff) == 0xffff);
+}
+
+TEST_CASE("math abs", "[klib::math]") {
+    REQUIRE(klib::abs(-100) == 100);
+    REQUIRE(klib::abs(100) == 100);
+    REQUIRE(klib::abs(0) == 0);
+    REQUIRE(klib::abs(-100.f) == 100.f);
+}
+
+TEST_CASE("math map", "[klib::math]") {
+    REQUIRE(klib::map(511, 0, 1024, 0, 255) == 127);
+    REQUIRE(klib::map(127, 255, 0, 0, 255) == 128);
+    REQUIRE(klib::map(0, 255, 0, 0, 255) == 255);
+}
+
+// TODO: add sqrt, log2, log and log10 tests
