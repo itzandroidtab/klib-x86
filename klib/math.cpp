@@ -69,11 +69,13 @@ TEST_CASE("math pow", "[klib::math]") {
 TEST_CASE("math ceil", "[klib::math]") {
     REQUIRE(klib::ceil(9.5f) == 10.f);
     REQUIRE(klib::ceil(-9.5f) == -9.f);
+    REQUIRE(klib::ceil(9.f) == 9.f);
 }
 
 TEST_CASE("math floor", "[klib::math]") {
-    REQUIRE(klib::ceil(9.5f) == 9.f);
-    REQUIRE(klib::ceil(-9.5f) == -10.f);
+    REQUIRE(klib::floor(9.5f) == 9.f);
+    REQUIRE(klib::floor(-9.5f) == -10.f);
+    REQUIRE(klib::floor(9.f) == 9.f);
 }
 
 TEST_CASE("math min", "[klib::math]") {
