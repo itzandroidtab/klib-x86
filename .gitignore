@@ -1,0 +1,6 @@
+# exclude the catch header
+catch.hpp
+
+# folders to exclude
+build/
+.vscode/
