@@ -34,7 +34,7 @@ jobs:
         run: gcc --version
       
       - name: Configure CMake
-        run: CC=gcc CXX=g++ cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+        run: CC=gcc CXX=g++ cmake ${{github.workspace}}/klib-x86 -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
       - name: Build
         run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
