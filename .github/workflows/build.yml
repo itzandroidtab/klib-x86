@@ -1,4 +1,4 @@
-name: klib library
+name: klib x86
 
 on:
   push:
@@ -18,7 +18,8 @@ jobs:
       - uses: actions/checkout@v3
         path: '${{github.workspace}}/klib-x86'
 
-      - uses: actions/checkout@v3
+      - name: getting klib
+        uses: actions/checkout@v3
         with:
           repository: itzandroidtab/klib
           ref: 'master'
