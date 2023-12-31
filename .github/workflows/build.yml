@@ -28,7 +28,7 @@ jobs:
           path: '${{github.workspace}}/klib'
 
       - name: downloading catch2
-        run: wget -q -O ${{github.workspace}}/klib-x86 https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp
+        run: wget -q -O ${{github.workspace}}/klib-x86/catch.hpp https://github.com/catchorg/Catch2/releases/download/v2.13.10/catch.hpp
 
       - name: gcc version
         run: gcc --version
