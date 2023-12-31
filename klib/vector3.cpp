@@ -76,7 +76,7 @@ TEST_CASE("vector3 operator-=", "[klib::vector3]") {
     klib::vector3<uint8_t> vector2(10);
     vector1 -= vector2;
 
-    REQUIRE(vector1.x == 20);
-    REQUIRE(vector1.y == 20);
-    REQUIRE(vector1.z == 20);
+    REQUIRE(vector1.x == 0);
+    REQUIRE(vector1.y == 0);
+    REQUIRE(vector1.z == 0);
 }

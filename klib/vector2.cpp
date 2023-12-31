@@ -52,8 +52,8 @@ TEST_CASE("vector2 operator-", "[klib::vector2]") {
     klib::vector2<uint8_t> vector2(10);
     const auto vector3 = vector1 - vector2;
 
-    REQUIRE(vector2.x == 0);
-    REQUIRE(vector2.y == 0);
+    REQUIRE(vector3.x == 0);
+    REQUIRE(vector3.y == 0);
 }
 
 TEST_CASE("vector2 operator-=", "[klib::vector2]") {
@@ -67,6 +67,6 @@ TEST_CASE("vector2 operator-=", "[klib::vector2]") {
     klib::vector2<uint8_t> vector2(10);
     vector1 -= vector2;
 
-    REQUIRE(vector1.x == 20);
-    REQUIRE(vector1.y == 20);
+    REQUIRE(vector1.x == 0);
+    REQUIRE(vector1.y == 0);
 }
