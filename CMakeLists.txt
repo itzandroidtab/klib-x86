@@ -11,6 +11,8 @@ add_compile_options("-fsingle-precision-constant")
 set(SOURCES 
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/math.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/klib/vector2.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/klib/vector3.cpp
 )
 
 # add our executable
