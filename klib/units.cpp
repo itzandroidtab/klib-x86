@@ -37,4 +37,26 @@ TEST_CASE("klib time ns", "[klib::units]") {
     REQUIRE(klib::time::ns(1) == 1_ns);
 }
 
+TEST_CASE("klib time operator+=", "[klib::units]") {
+    using namespace klib::time;
+
+    auto time = klib::time::ns(1);
+    REQUIRE(time == 1_ns);
+
+    // increment the time
+    time += klib::time::ns(1);
+    REQUIRE(time == 2_ns);
+}
+
+TEST_CASE("klib time operator-=", "[klib::units]") {
+    using namespace klib::time;
+
+    auto time = klib::time::ns(10);
+    REQUIRE(time == 10_ns);
+
+    // increment the time
+    time -= klib::time::ns(1);
+    REQUIRE(time == 9_ns);
+}
+
 // TODO: add tests for operators
