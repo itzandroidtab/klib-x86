@@ -46,7 +46,7 @@ TEST_CASE("Base32 valid input does not fail", "[klib::base32]") {
     REQUIRE(klib::crypt::base32::decode("23456723", buf, sizeof(buf)));
 }
 
-TEST_CASE("Base32 output is valid", "[klib::base32]") {
+TEST_CASE("Base32 output is valid", "[klib::crypt::base32]") {
     uint8_t buf[32];
 
     // make sure we do not have a failure
