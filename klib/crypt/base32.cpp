@@ -25,7 +25,7 @@ TEST_CASE("Base32 invalid output size works", "[klib::base32]") {
 TEST_CASE("Base32 valid output size works", "[klib::base32]") {
     // note, every character in the input needs 5 bits. 
     // ((8 * 5) / 8 = 5 bytes are required for 8 input characters)
-    uint8_t buf[5];
+    uint8_t buf[6];
 
     // this should pass as we need 5 bytes
     REQUIRE(klib::crypt::base32::decode("ABCDEFGH", buf, sizeof(buf)));
