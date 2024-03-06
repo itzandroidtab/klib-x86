@@ -16,6 +16,7 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/units.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/vector2.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/vector3.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/klib/crypt/base32.cpp
 )
 
 # add our executable
