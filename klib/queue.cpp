@@ -47,7 +47,7 @@ TEST_CASE("Queue empty, full, max_size and size work", "[klib::queue]") {
 }
 
 TEST_CASE("Read-optimized queue front and back work", "[klib::queue]") {
-    klib::queue<int, 16, klib::queue_optimization::READ> q;
+    klib::queue<int, 16, klib::queue_optimization::read> q;
 
     q.push(12);
     q.push(24);
@@ -57,7 +57,7 @@ TEST_CASE("Read-optimized queue front and back work", "[klib::queue]") {
 }
 
 TEST_CASE("Read-optimized queue empty, full, max_size and size work", "[klib::queue]") {
-    klib::queue<int, 2, klib::queue_optimization::READ> q;
+    klib::queue<int, 2, klib::queue_optimization::read> q;
 
     q.push(12);
     q.push(24);
@@ -73,11 +73,11 @@ TEST_CASE("Read-optimized queue empty, full, max_size and size work", "[klib::qu
 }
 
 TEST_CASE("optimized_for given back the correct result", "[klib::queue]") {
-    klib::queue<int, 2, klib::queue_optimization::WRITE> a;
-    klib::queue<int, 2, klib::queue_optimization::READ> b;
+    klib::queue<int, 2, klib::queue_optimization::write> a;
+    klib::queue<int, 2, klib::queue_optimization::read> b;
 
-    REQUIRE(a.optimized_for() == klib::queue_optimization::WRITE);
-    REQUIRE(b.optimized_for() == klib::queue_optimization::READ);
+    REQUIRE(a.optimized_for() == klib::queue_optimization::write);
+    REQUIRE(b.optimized_for() == klib::queue_optimization::read);
 }
 
 TEST_CASE("queue is empty after clear()", "[klib::queue]"){
