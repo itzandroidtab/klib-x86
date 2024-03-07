@@ -10,6 +10,8 @@ TEST_CASE("datetime to epoch conversion is correct", "[klib::io::rtc]") {
     REQUIRE(klib::io::rtc::datetime_to_epoch(2098, 12, 31, 23, 59, 59).value == 4070908799);
     REQUIRE(klib::io::rtc::datetime_to_epoch(2097, 12, 31, 23, 59, 59).value == 4039372799);
     REQUIRE(klib::io::rtc::datetime_to_epoch(2050, 12, 31, 23, 59, 59).value == 2556143999);
+    REQUIRE(klib::io::rtc::datetime_to_epoch(2024, 2, 6, 3, 20, 2).value == 1707189602);   
+    REQUIRE(klib::io::rtc::datetime_to_epoch(2024, 3, 6, 3, 20, 2).value == 1709695202);   
 }
 
 TEST_CASE("epoch to datetime conversion is correct", "[klib::io::rtc]") {
