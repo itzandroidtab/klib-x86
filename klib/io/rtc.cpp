@@ -32,5 +32,7 @@ TEST_CASE("epoch to datetime conversion is correct", "[klib::io::rtc]") {
     REQUIRE(klib::io::rtc::epoch_to_datetime(4070908799) == klib::io::rtc::datetime{2098, 12, 31, 23, 59, 59});
     REQUIRE(klib::io::rtc::epoch_to_datetime(4039372799) == klib::io::rtc::datetime{2097, 12, 31, 23, 59, 59});
     REQUIRE(klib::io::rtc::epoch_to_datetime(2556143999) == klib::io::rtc::datetime{2050, 12, 31, 23, 59, 59});
+    REQUIRE(klib::io::rtc::epoch_to_datetime(1707189602) == klib::io::rtc::datetime{2024, 2, 6, 3, 20, 2});   
+    REQUIRE(klib::io::rtc::epoch_to_datetime(1709695202) == klib::io::rtc::datetime{2024, 3, 6, 3, 20, 2}); 
 }
 
