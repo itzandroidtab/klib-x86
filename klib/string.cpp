@@ -139,4 +139,14 @@ TEST_CASE("klib itoa", "[klib::string]") {
     REQUIRE(std::string(buffer) == "false");
 }
 
+TEST_CASE("klib count_chars", "[klib::string::detail]") {
+    REQUIRE(klib::string::detail::count_chars(0) == 1);
+    REQUIRE(klib::string::detail::count_chars(10) == 2);
+    REQUIRE(klib::string::detail::count_chars(100) == 3);
+    REQUIRE(klib::string::detail::count_chars(99) == 2);
+    REQUIRE(klib::string::detail::count_chars<klib::base::BIN>(0b11) == 2);
+    REQUIRE(klib::string::detail::count_chars<klib::base::HEX>(0xff) == 2);
+    REQUIRE(klib::string::detail::count_chars<klib::base::OCT>(077) == 2);
+}
+
 // TODO: stoa
