@@ -18,6 +18,7 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/vector3.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/crypt/base32.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/io/rtc.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/klib/dynamic_array.cpp
 )
 
 # add our executable
