@@ -12,6 +12,7 @@ set(SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/math.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/queue.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/klib/ringbuffer.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/string.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/units.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/klib/vector2.cpp
