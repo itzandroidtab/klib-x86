@@ -30,20 +30,52 @@ TEST_CASE("Queue front and back work", "[klib::queue]") {
     REQUIRE(q.back() == 24);
 }
 
-TEST_CASE("Queue empty, full, max_size and size work", "[klib::queue]") {
+
+TEST_CASE("Queue empty works", "[klib::queue]") {
     klib::queue<int, 2> q;
 
     q.push(12);
     q.push(24);
 
-    REQUIRE(q.size() == 2);
-    REQUIRE(q.max_size() == 2);
-    REQUIRE(q.full());
-
     q.pop();
     q.pop();
 
     REQUIRE(q.empty());
+}
+
+TEST_CASE("Queue full works", "[klib::queue]") {
+    klib::queue<int, 2> q;
+
+    q.push(12);
+    q.push(24);
+
+    REQUIRE(q.full());
+}
+
+TEST_CASE("Queue max_size is correct", "[klib::queue]") {
+    klib::queue<int, 2> q;
+
+    REQUIRE(q.max_size() == 2);
+
+    klib::queue<int, 100> a;
+
+    REQUIRE(a.max_size() == 100);
+}
+
+TEST_CASE("Queue size works", "[klib::queue]") {
+    klib::queue<int, 2> q;
+
+    q.push(12);
+    REQUIRE(q.size() == 1);
+
+    q.push(24);
+    REQUIRE(q.size() == 2);
+
+    q.pop();
+    REQUIRE(q.size() == 1);
+
+    q.pop();
+    REQUIRE(q.size() == 0);
 }
 
 TEST_CASE("Read-optimized queue front and back work", "[klib::queue]") {
