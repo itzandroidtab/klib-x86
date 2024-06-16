@@ -79,6 +79,28 @@ TEST_CASE("klib strcpy", "[klib::string]") {
     REQUIRE(std::string(buffer) == "hello world");
 }
 
+TEST_CASE("klib strncpy", "[klib::string]") {
+    char buffer[32];
+    klib::string::strncpy(buffer, "", sizeof(buffer));
+    REQUIRE(std::string(buffer) == "");
+
+    klib::string::strncpy(buffer, "hello world", sizeof(buffer));
+    REQUIRE(std::string(buffer) == "hello world");
+
+    std::fill_n(buffer, sizeof(buffer), 0x00);
+    klib::string::strncpy(buffer, "hello world", 0);
+    REQUIRE(std::string(buffer) == "");
+
+    buffer[0] = 'a';
+    buffer[1] = 'b';
+    buffer[2] = 'c';
+
+    klib::string::strncpy(buffer, "hello world", 0);
+    REQUIRE(buffer[0] == 'a');
+    REQUIRE(buffer[1] == 'b');
+    REQUIRE(buffer[2] == 'c');
+}
+
 TEST_CASE("klib strcat", "[klib::string]") {
     char buffer[32] = "hello";
     klib::string::strcat(buffer, "");
