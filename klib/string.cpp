@@ -149,16 +149,32 @@ TEST_CASE("klib stoi", "[klib::string]") {
 
 TEST_CASE("klib itoa", "[klib::string]") {
     char buffer[32] = {};
-    klib::string::itoa<klib::base::HEX>(0xdead, buffer);
-    REQUIRE(std::string(buffer) == "0xdead");
-    klib::string::itoa<klib::base::DEC>(1000, buffer);
-    REQUIRE(std::string(buffer) == "1000");
-    klib::string::itoa<klib::base::BIN>(0b1010, buffer);
-    REQUIRE(std::string(buffer) == "0b1010");
-    klib::string::itoa<klib::base::BIN, true>(true, buffer);
-    REQUIRE(std::string(buffer) == "true");
-    klib::string::itoa<klib::base::BIN, true>(false, buffer);
-    REQUIRE(std::string(buffer) == "false");
+    
+    {
+        const uint32_t x = klib::string::itoa<klib::base::HEX>(0xdead, buffer);
+        REQUIRE(std::string(buffer) == "0xdead");
+        REQUIRE(x == 6);
+    }
+    {
+        const uint32_t x = klib::string::itoa<klib::base::DEC>(1000, buffer);
+        REQUIRE(std::string(buffer) == "1000");
+        REQUIRE(x == 4);
+    }
+    {
+        const uint32_t x = klib::string::itoa<klib::base::BIN>(0b1010, buffer);
+        REQUIRE(std::string(buffer) == "0b1010");
+        REQUIRE(x == 6);
+    }
+    {
+        const uint32_t x = klib::string::itoa<klib::base::BIN, true>(true, buffer);
+        REQUIRE(std::string(buffer) == "true");
+        REQUIRE(x == 4);
+    }
+    {
+        const uint32_t x = klib::string::itoa<klib::base::BIN, true>(false, buffer);
+        REQUIRE(std::string(buffer) == "false");
+        REQUIRE(x == 5);
+    }
 }
 
 TEST_CASE("klib count_chars", "[klib::string::detail]") {
@@ -173,4 +189,52 @@ TEST_CASE("klib count_chars", "[klib::string::detail]") {
     REQUIRE(klib::string::detail::count_chars<klib::base::OCT>(077) == 2);
 }
 
-// TODO: stoa
+TEST_CASE("klib ftoa", "[klib::string]") {
+    char buffer[32] = {};
+    {
+        const uint32_t x = klib::string::ftoa(1.5f, buffer);
+        REQUIRE(std::string(buffer) == "1.50000");
+        REQUIRE(x == 7);
+    }
+    {
+        const uint32_t x = klib::string::ftoa(1000.0f, buffer);
+        REQUIRE(std::string(buffer) == "1000.00000");
+        REQUIRE(x == 10);
+    }
+    {
+        const uint32_t x = klib::string::ftoa(0.0f, buffer);
+        REQUIRE(std::string(buffer) == "0");
+        REQUIRE(x == 1);
+    }
+    {
+        const uint32_t x = klib::string::ftoa(-1.5f, buffer);
+        REQUIRE(std::string(buffer) == "-1.50000");
+        REQUIRE(x == 8);
+    }
+    {
+        const uint32_t x = klib::string::ftoa<2>(3.14f, buffer);
+        REQUIRE(std::string(buffer) == "3.14");
+        REQUIRE(x == 4);
+    }
+    {
+        const uint32_t x = klib::string::ftoa<0>(3.f, buffer);
+        REQUIRE(std::string(buffer) == "3");
+        REQUIRE(x == 1);
+    }
+    {
+        const uint32_t x = klib::string::ftoa(std::numeric_limits<float>::infinity(), buffer);
+        REQUIRE(std::string(buffer) == "Inf");
+        REQUIRE(x == 3);
+    }
+    {
+        const uint32_t x = klib::string::ftoa(std::numeric_limits<float>::quiet_NaN(), buffer);
+        REQUIRE(std::string(buffer) == "NaN");
+        REQUIRE(x == 3);
+    }
+    {
+        // Note: this is an aproximation due to precision
+        const uint32_t x = klib::string::ftoa<5, double>(static_cast<double>(1e20), buffer);
+        REQUIRE(std::string(buffer) == "100000002086809764400.00000");
+        REQUIRE(x == 27);
+    }
+}
